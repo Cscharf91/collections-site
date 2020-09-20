@@ -1,0 +1,59 @@
+<%= form_with(model: practice, local: true) do |form| %>
+  <% if practice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(practice.errors.count, "error") %> prohibited this practice from being saved:</h2>
+
+      <ul>
+      <% practice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-grid">
+    <div class="field">
+      <%= form.label :name, "Name:" %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :code, "Code:" %>
+      <%= form.text_field :code %>
+    </div>
+
+    <div class="field">
+      <%= form.label :address, "Address:" %>
+      <%= form.text_field :address %>
+    </div>
+
+    <div class="field">
+      <%= form.label :city, "City:" %>
+      <%= form.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= form.label :state, "State:" %>
+      <%= form.text_field :state %>
+    </div>
+
+    <div class="field">
+      <%= form.label :zip, "Zip:" %>
+      <%= form.text_field :zip %>
+    </div>
+
+    <div class="field">
+      <%= form.label :phone, "Phone:" %>
+      <%= form.text_field :phone %>
+    </div>
+
+    <div class="field">
+      <%= form.label :dr_type, "Type:" %>
+      <%= form.text_field :dr_type %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </div>
+<% end %>

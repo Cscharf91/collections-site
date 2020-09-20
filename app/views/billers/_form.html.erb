@@ -1,0 +1,67 @@
+<%= form_with(model: @biller, local: true) do |form| %>
+  <% if @biller.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@biller.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+      <ul>
+      <% @biller.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-grid">
+    <div class="field">
+      <%= form.label :company_name, "Company Name" %>
+      <%= form.text_field :company_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :email %>
+      <%= form.text_field :email %>
+    </div>
+
+
+
+    <div class="field">
+      <%= form.label :phone %>
+      <%= form.text_field :phone %>
+    </div>
+
+    <div class="field">
+      <%= form.label :amount_owed, "Approximately how much are you collecting?" %>
+      <%= form.text_field :amount_owed %>
+    </div>
+
+    <div class="field">
+      <%= form.label :number_of_accounts, "Approximately how many accounts do you need to be collected on?" %>
+      <%= form.text_field :number_of_accounts %>
+    </div>
+
+    <div class="field">
+      <%= form.label :time_outstanding, "How long, on average, have the debts you need collected been outstanding?" %>
+      <%= form.text_field :time_outstanding %>
+    </div>
+
+    <div class="field">
+      <%= form.label :industry %>
+      <%= form.text_field :industry %>
+    </div>
+
+    <div class="field">
+      <%= form.label :details %>
+      <%= form.text_area :details %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit :class => "submit-btn" %>
+    </div>
+
+  </div>
+<% end %>

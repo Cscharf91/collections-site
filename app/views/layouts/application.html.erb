@@ -6,12 +6,49 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet"> 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="nav-grid">
+      <h2 class="logo">RJS Billing</h2>
+      <ul class="nav-list">
+      <li><%= link_to 'Home', root_path %></li>
+      <% if current_user %>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <li><%= link_to 'Sign In', new_user_session_path %></li>
+      <% end %>
+      </ul>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%# <div class="content-wrapper"> %>
+      <% if current_user && current_user.admin %>
+        <div class="links-container">
+          
+          <%= button_tag "Add Practice", :type => 'button', :class => "btn", :onclick => "location.href = '#{new_practice_path()}'" %>
+          
+          
+          <%= button_tag "Add Collection", :type => 'button', :class => "btn", :onclick => "location.href = '#{new_collection_path()}'" %>
+        
+          
+          <%= button_tag "Search Practices", :type => 'button', :class => "btn", :onclick => "location.href = '#{practices_path()}'" %>
+          
+          
+          <%= button_tag "Search Collections", :type => 'button', :class => "btn", :onclick => "location.href = '#{collections_path()}'" %>
+
+      </div>
+
+      <% end %>
+      <%= yield %>
+    <%# </div> %>
+    <%# <footer>
+      <span>2020 RJS Billing</span>
+      <span><a href="#">Contact Us</a></span>
+      <span>Idk some other shit can go here</span>
+    </footer> %>
   </body>
 </html>

@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Practices</h1>
+
+ <div class="search">
+    <h3>Search for Practice by Code</h3>
+    <%= form_with(url: practices_path, method: "get", local: true) do %>
+      <%= text_field_tag(:search, params[:search]) %>
+      <%= submit_tag ("Search") %><br>
+    <% end %>
+  </div>
+
+<% if @practice %>
+  <div class="practices-container">
+    <%= render 'practices/show' %>
+  </div>
+<% end %>

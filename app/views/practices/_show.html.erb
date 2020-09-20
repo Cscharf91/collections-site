@@ -1,0 +1,49 @@
+<p>
+  <strong>Name:</strong>
+  <%= @practice.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @practice.code %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @practice.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @practice.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @practice.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @practice.zip %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @practice.phone %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @practice.dr_type %>
+</p>
+
+<h2>Collections For This Practice</h2>
+<p>
+<% @practice.collections.each do |c| %>
+  <%= link_to c.fname + ' ' + c.lname, collection_path(c) %>
+<% end %>
+<p>
+
+<%= link_to 'Edit Practice', edit_practice_path(@practice) %> |
+<%= link_to 'New Practice', new_practice_path %>

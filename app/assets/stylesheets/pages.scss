@@ -1,0 +1,91 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.info-grid {
+    justify-self: center;
+    align-self: flex-start;
+    display: grid;
+    grid-gap: 5px;
+    margin: auto;
+    align-items: center;
+    width: 80%;
+    min-height: 200px;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 2;
+}
+
+.info-grid > * {
+    text-align: center;
+    height: 70px;
+    // border-radius: 10px;
+}
+
+a:link {
+    text-decoration: none;
+  }
+
+.clients-portal {
+    border: 1px solid;
+    width: 384px;
+    height: 216px;
+    background-image: asset-url("doc.jpg");
+    background-size: 384px 216px;
+}
+
+.debtors-portal {
+    border: 1px solid;
+    width: 384px;
+    height: 216px;
+    background-image: asset-url("handshake.jpg");
+    background-size: 384px 216px;
+}
+
+.info-grid h4 {
+    color: white;
+    background: rgba(0, 0, 0, 0.6)
+}
+
+.home-pages-info p {
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    background: #004ba0;
+}
+
+@media(min-width: 800px) {
+}
+
+@media(max-width: 800px) {
+    .info-grid {
+        margin-left: 50px;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .clients-portal {
+        order: 3;
+    }
+
+    .debtors-portal {
+        order: 1;
+    }
+
+    .billinfo {
+        order: 2;
+    }
+
+    .billersinfo {
+        order: 4;
+    }
+
+    .rjs-ryan {
+        // grid-row: 5 / span 1;
+        order: 5;
+    }
+
+    .experience {
+        order: 6;
+    }
+}
