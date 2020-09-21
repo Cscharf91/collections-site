@@ -23,7 +23,9 @@ class CollectionsController < ApplicationController
   def create
     @collection = Collection.new(collection_params)
     if @collection.save
-      redirect_to collections_path, notice: 'Collection was successfully created.'
+      @collection.account_number = @collection.id + 1000
+      @collection.save
+      redirect_to @collection, notice: 'Collection was successfully created.'
     else
       render :new
     end
@@ -57,6 +59,6 @@ class CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:account_number, :lname, :fname, :money_due, :money_paid, :practice_id, :total_due, :phone, :phone2, :phone3, :notes, :search, :scan)
+      params.require(:collection).permit(:account_number, :dob, :lname, :fname, :money_due, :money_paid, :practice_id, :total_due, :phone, :phone2, :phone3, :notes, :search, :scan)
     end
 end

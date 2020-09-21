@@ -28,7 +28,7 @@ class PracticesController < ApplicationController
   def create
     @practice = Practice.new(practice_params)
     if @practice.save
-      redirect_to practices_path, notice: 'Practice was successfully created.'
+      redirect_to @practice, notice: 'Practice was successfully created.'
     else
       render :new
     end
