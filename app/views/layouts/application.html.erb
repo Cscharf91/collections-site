@@ -4,6 +4,7 @@
     <title>CollectionWebsite</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet"> 
@@ -25,7 +26,7 @@
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%# <div class="content-wrapper"> %>
+    <div class="content-wrapper">
       <% if current_user && current_user.admin %>
         <div class="links-container">
           
@@ -44,7 +45,7 @@
 
       <% end %>
       <%= yield %>
-    <%# </div> %>
+    </div>
     <%# <footer>
       <span>2020 RJS Billing</span>
       <span><a href="#">Contact Us</a></span>

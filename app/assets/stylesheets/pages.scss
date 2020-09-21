@@ -4,15 +4,16 @@
 
 .info-grid {
     justify-self: center;
-    align-self: flex-start;
+    align-self: center;
     display: grid;
     grid-gap: 5px;
-    margin: auto;
+    // margin: auto;
     align-items: center;
     width: 80%;
     min-height: 200px;
     grid-template-columns: 1fr 1fr;
     grid-column: 2;
+    grid-row: 1 / span 3;
 }
 
 .info-grid > * {
@@ -59,16 +60,18 @@ a:link {
 
 @media(max-width: 800px) {
     .info-grid {
-        margin-left: 50px;
+        grid-row: 2;
         grid-template-columns: 1fr;
         justify-items: center;
     }
 
     .clients-portal {
+        width: 300px;
         order: 3;
     }
 
     .debtors-portal {
+        width: 300px;
         order: 1;
     }
 

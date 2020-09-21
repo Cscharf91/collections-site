@@ -27,15 +27,10 @@ class PracticesController < ApplicationController
   # POST /practices.json
   def create
     @practice = Practice.new(practice_params)
-
-    respond_to do |format|
-      if @practice.save
-        format.html { redirect_to @practice, notice: 'Practice was successfully created.' }
-        format.json { render :show, status: :created, location: @practice }
-      else
-        format.html { render :new }
-        format.json { render json: @practice.errors, status: :unprocessable_entity }
-      end
+    if @practice.save
+      redirect_to practices_path, notice: 'Practice was successfully created.'
+    else
+      render :new
     end
   end
 

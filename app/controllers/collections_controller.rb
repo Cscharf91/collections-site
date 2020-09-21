@@ -21,17 +21,11 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    #@practice = Practice.find(params[:practice_id])
     @collection = Collection.new(collection_params)
-
-    respond_to do |format|
-      if @collection.save
-        format.html { redirect_to @collection, notice: 'Collection was successfully created.' }
-        format.json { render :show, status: :created, location: @collection }
-      else
-        format.html { render :new }
-        format.json { render json: @collection.errors, status: :unprocessable_entity }
-      end
+    if @collection.save
+      redirect_to collections_path, notice: 'Collection was successfully created.'
+    else
+      render :new
     end
   end
 
