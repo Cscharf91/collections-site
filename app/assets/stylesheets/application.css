@@ -193,6 +193,20 @@
      grid-column: 2;
  }
 
+ .notes-container {
+     display: grid;
+     grid-column: 3;
+     grid-row: 1;
+     margin-right: 120px;
+ }
+
+ .note {
+    display: grid;
+    height: auto;
+    border: 1px solid;
+    grid-template-row: 1fr 1fr;
+}
+
  @media(max-width: 800px) {
     .content-wrapper {
         display: block;

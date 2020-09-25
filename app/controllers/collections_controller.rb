@@ -9,6 +9,7 @@ class CollectionsController < ApplicationController
 
   def show
     @practice = Practice.find(@collection.practice_id)
+    # @notes = @practice.notes.all.order('created_at DESC')
   end
 
   def new
@@ -50,6 +51,12 @@ class CollectionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def new_note
+    new_note = Note.new(collection_id: params[:collection_id], message: params[:message])
+    puts new_note.errors.full_messages if !new_note.save
+    redirect_back(fallback_location: root_path)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -59,6 +66,6 @@ class CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:account_number, :ssn, :dob, :lname, :fname, :money_due, :money_paid, :practice_id, :total_due, :phone, :phone2, :phone3, :notes, :search, :scan)
+      params.require(:collection).permit(:account_number, :ssn, :dob, :lname, :fname, :money_due, :money_paid, :practice_id, :total_due, :phone, :phone2, :phone3, :notes, :search, :address, :address2, :city, :state, :zip, :scan)
     end
 end
