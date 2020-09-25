@@ -3,7 +3,16 @@ class CollectionsController < ApplicationController
 
   def index
     if params[:commit]
-      @collection = Collection.find_by(account_number: params[:search])
+      if params[:search_type] == "Account Number"
+        @collection = Collection.find_by(account_number: params[:search])
+        puts @collection
+      elsif params[:search_type] == "Last Name"
+        @collection = Collection.find_by(lname: params[:search])
+        puts @collection
+      elsif params[:search_type] == "Date of Birth"
+        @collection = Collection.find_by(dob: params[:search])
+        puts @collection
+      end
     end
   end
 

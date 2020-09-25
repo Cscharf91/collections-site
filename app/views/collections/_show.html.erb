@@ -1,5 +1,5 @@
-<h2>Collection</h2>
-
+<h2><%= link_to @collection.fname + " " + @collection.lname, @collection %></h2>
+<p>Click above for more info and notes.</p>
 <p>
   <strong>Account number:</strong>
   <%= @collection.account_number %>
@@ -60,11 +60,6 @@
   <%= @collection.practice.name %>
 </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @collection.notes %>
-</p>
-
 <% if @collection.scan.attached? %>
   <div class="attached-scan">
     <%= image_tag(@collection.scan) %>
@@ -72,4 +67,4 @@
 <% end %>
 
 <%= link_to 'Edit', edit_collection_path(@collection) %>
-<%= link_to 'Back', collections_path %>
+<%= link_to 'Show', @collection %>
