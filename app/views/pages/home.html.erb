@@ -2,14 +2,14 @@
   <a class="debtors-portal" href="#">
     <h4>Debtors Portal</h4>
   </a>
-  <a class="clients-portal" href="#">
-    <h4>Billers Portal</h4>
-  </a>
+  <div class="clients-portal">
+    <h4 class="portal-link"><%= link_to "Billers Portal", new_biller_path %></h4>
+  </div>
   <div class="home-pages-info billinfo">
     <p>View more information regarding your bill, or make a payment.</p>
   </div>
   <div class="home-pages-info billersinfo">
-    <p>Learn more about us, and why we'll make a great team.</p>
+    <p>Together, we'll make a great team.</p>
   </div>
   <%= image_tag "ryan.jpg", class: "rjs-ryan" %>
   <div class="home-pages-info experience">

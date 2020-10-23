@@ -68,6 +68,13 @@
      grid-row: 1 / span 1;
 }
 
+.thanks-msg {
+    text-align: center;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    margin-top: 100px;
+}
+
  .nav-grid h2 {
      text-align: center;
      color: white;
@@ -193,6 +200,13 @@
      grid-column: 2;
  }
 
+ .billers-container {
+    display: grid;
+    grid-row: 1;
+    grid-column: 2;
+    margin: 50px;
+ }
+
  .notes-container {
      display: grid;
      grid-column: 3;
@@ -214,7 +228,7 @@
 
     .links-container {
         margin: auto;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         grid-template-rows: 1fr;
         grid-row: 1;
         grid-column: 1 / -1;

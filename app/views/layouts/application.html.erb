@@ -29,16 +29,10 @@
     <div class="content-wrapper">
       <% if current_user && current_user.admin %>
         <div class="links-container">
-          
+          <%= button_tag "View Billers", :type => 'button', :class => "btn", :onclick => "location.href = '#{billers_path()}'" %>
           <%= button_tag "Add Practice", :type => 'button', :class => "btn", :onclick => "location.href = '#{new_practice_path()}'" %>
-          
-          
           <%= button_tag "Add Collection", :type => 'button', :class => "btn", :onclick => "location.href = '#{new_collection_path()}'" %>
-        
-          
           <%= button_tag "Search Practices", :type => 'button', :class => "btn", :onclick => "location.href = '#{practices_path()}'" %>
-          
-          
           <%= button_tag "Search Collections", :type => 'button', :class => "btn", :onclick => "location.href = '#{collections_path()}'" %>
 
       </div>

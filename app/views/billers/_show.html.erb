@@ -1,0 +1,53 @@
+<% @billers.each do |biller| %>
+
+    <h2><%= biller.company_name %></h2>
+    <p>Click above for more info.</p>
+
+    <p>
+    <strong>Company Name:</strong>
+    <%= biller.company_name %>
+    </p>
+
+    <p>
+    <strong>Name:</strong>
+    <%= biller.name %>
+    </p>
+
+    <p>
+    <strong>Email:</strong>
+    <%= biller.email %>
+    </p>
+
+    <p>
+    <strong>Phone Number:</strong>
+    <%= biller.phone %>
+    </p>
+
+    <p>
+    <strong>Amount Owed:</strong>
+    <%= biller.amount_owed %>
+    </p>
+
+    <p>
+    <strong>Number of Accounts:</strong>
+    <%= biller.number_of_accounts %>
+    </p>
+
+    <p>
+    <strong>Time Outstanding:</strong>
+    <%= biller.time_outstanding %>
+    </p>
+
+    <p>
+    <strong>Industry:</strong>
+    <%= biller.industry %>
+    </p>
+
+    <p>
+    <strong>Details:</strong>
+    <%= biller.details %>
+    </p>
+
+    <%= link_to 'Edit', edit_biller_path(biller) %>
+    <%= link_to 'Delete', biller, method: :delete %>
+<% end %>

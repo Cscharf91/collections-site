@@ -1,3 +1,4 @@
+<h1>Let's get Started</h1>
 <%= form_with(model: @biller, local: true) do |form| %>
   <% if @biller.errors.any? %>
     <div id="error_explanation">
@@ -60,7 +61,7 @@
     </div>
 
     <div class="actions">
-      <%= form.submit :class => "submit-btn" %>
+      <%= form.submit "Submit Form", :class => "submit-btn" %>
     </div>
 
   </div>
