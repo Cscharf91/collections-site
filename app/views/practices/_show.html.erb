@@ -36,14 +36,19 @@
 <p>
   <strong>Type:</strong>
   <%= @practice.dr_type %>
-</p>
-
+</p><br>
+<div class="break-line-full full-grid"></div>
+<div class="practice-collections-list">
 <h2>Collections For This Practice</h2>
 <p>
 <% @practice.collections.each do |c| %>
-  <%= link_to c.fname + ' ' + c.lname, collection_path(c) %>
+  <p><%= link_to c.fname + ' ' + c.lname, collection_path(c) %></p>
 <% end %>
-<p>
+</p>
+</div><br>
 
+<div class="break-line-full full-grid"></div>
+
+<p>
 <%= link_to 'Edit Practice', edit_practice_path(@practice) %>
-<%= link_to 'New Practice', new_practice_path %>
+<%= link_to 'New Practice', new_practice_path %></p>

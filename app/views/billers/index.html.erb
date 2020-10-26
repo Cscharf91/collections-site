@@ -1,7 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="hero">
+  <h2>Biller Applications</h2>
+</div>
 
-<h1>Billers</h1>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
-<div class="billers-container">
-  <%= render 'billers/show' %>
+<div class="main-content">
+  <% if @billers.length > 0 %>
+    <div class="search-container">
+      <%= render 'billers/show' %>
+    </div>
+  <% else %>
+    <h3 class="new-sect">No Biller Applications Active</h3>
+    <%= link_to "Back", root_path %>
+  <% end %>
 </div>

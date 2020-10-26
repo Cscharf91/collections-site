@@ -1,92 +1,100 @@
-<div class="search-container">
-<h2>Collection</h2>
+<div class="hero"><h2>View Collection</h2></div>
 
-<p>
-  <strong>Account number:</strong>
-  <%= @collection.account_number %>
-</p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @collection.fname %>
-</p>
+<div class="main-content">
+  <h2 class="article-title"><%= @collection.fname + " " + @collection.lname %></h2>
+  <a class="page-btn" href="#attached-scan">Scan</a>
+  <a class="page-btn" href="#notes-container">Notes</a>
+  <div class="text-left">
+    <p>
+      <strong>Account number:</strong>
+      <%= @collection.account_number %>
+    </p>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @collection.lname %>
-</p>
+    <p>
+      <strong>First Name:</strong>
+      <%= @collection.fname %>
+    </p>
 
-<p>
-  <strong>Social Security Number:</strong>
-  <%= @collection.ssn %>
-</p>
+    <p>
+      <strong>Last Name:</strong>
+      <%= @collection.lname %>
+    </p>
 
-<p>
-  <strong>Date of Birth:</strong>
-  <%= @collection.dob %>
-</p>
+    <p>
+      <strong>Social Security Number:</strong>
+      <%= @collection.ssn %>
+    </p>
 
-<p>
-  <strong>Money due:</strong>
-  <%= @collection.money_due %>
-</p>
+    <p>
+      <strong>Date of Birth:</strong>
+      <%= @collection.dob %>
+    </p>
 
-<p>
-  <strong>Money paid:</strong>
-  <%= @collection.money_paid %>
-</p>
+    <p>
+      <strong>Money due:</strong>
+      <%= @collection.money_due %>
+    </p>
 
-<p>
-  <strong>Total due:</strong>
-  <%= @collection.total_due %>
-</p>
+    <p>
+      <strong>Money paid:</strong>
+      <%= @collection.money_paid %>
+    </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @collection.phone %>
-</p>
+    <p>
+      <strong>Total due:</strong>
+      <%= @collection.total_due %>
+    </p>
 
-<p>
-  <strong>Phone2:</strong>
-  <%= @collection.phone2 %>
-</p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @collection.phone %>
+    </p>
 
-<p>
-  <strong>Phone3:</strong>
-  <%= @collection.phone3 %>
-</p>
+    <p>
+      <strong>Phone2:</strong>
+      <%= @collection.phone2 %>
+    </p>
 
-<p>
-  <strong>Practice:</strong>
-  <%= @collection.practice.name %>
-</p>
+    <p>
+      <strong>Phone3:</strong>
+      <%= @collection.phone3 %>
+    </p>
 
-<% if @collection.scan.attached? %>
-  <div class="attached-scan">
-    <%= image_tag(@collection.scan) %>
+    <p>
+      <strong>Practice:</strong>
+      <%= @collection.practice.name %>
+    </p><br>
+
+    <% if @collection.scan.attached? %>
+      <div id="attached-scan">
+      <p><strong>Scan:</strong></p>
+        <%= image_tag(@collection.scan, class: "scan-img full-grid") %>
+      </div>
+    <% end %>
+
+    <br><br><%= link_to 'Edit Collection', edit_collection_path(@collection) %>
+    <%= link_to 'Back', collections_path %><br><br>
+
+    <% if @collection.notes %>
+        <div id="notes-container">
+          <div class="note-form">
+            <%= form_with(url: '/new_note', method: 'POST') do |f| %>
+              <%= f.label :message, "Note:", class: "note-info" %><br>
+              <%= f.text_area :message %>
+              <%= f.hidden_field :collection_id, value: @collection.id %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+      <% @collection.notes.each do |note| %>
+          <div class="note">
+            <p class="note-info"> <%= note.created_at.strftime("%Y-%m-%d") %> </p>
+            <p><%= note.message %></p>
+          </div>
+      <% end %>
+        </div>
+    <% end %>
   </div>
-<% end %>
-
-<%= link_to 'Edit', edit_collection_path(@collection) %>
-<%= link_to 'Back', collections_path %>
 </div>
-
-
-<% if @collection.notes %>
-    <div class="notes-container">
-      <div class="note-form">
-        <%= form_with(url: '/new_note', method: 'POST') do |f| %>
-          <%= f.label :message, "Note:" %><br>
-          <%= f.text_area :message %>
-          <%= f.hidden_field :collection_id, value: @collection.id %>
-          <%= f.submit %>
-        <% end %>
-      </div>
-  <% @collection.notes.each do |note| %>
-      <div class="note">
-        <p> <%= note.created_at.strftime("%Y-%m-%d") %> </p>
-        <p><%= note.message %></p>
-      </div>
-  <% end %>
-    </div>
-<% end %>

@@ -5,45 +5,39 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%# <link rel="stylesheet" href="/assets/stylesheets/reset.css"> %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <nav class="nav-grid">
-      <h2 class="logo">RJS Billing</h2>
-      <ul class="nav-list">
-      <li><%= link_to 'Home', root_path %></li>
-      <% if current_user %>
-        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-        <li><%= link_to 'Sign In', new_user_session_path %></li>
-      <% end %>
-      </ul>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="content-wrapper">
-      <% if current_user && current_user.admin %>
-        <div class="links-container">
-          <%= button_tag "View Billers", :type => 'button', :class => "btn", :onclick => "location.href = '#{billers_path()}'" %>
-          <%= button_tag "Add Practice", :type => 'button', :class => "btn", :onclick => "location.href = '#{new_practice_path()}'" %>
-          <%= button_tag "Add Collection", :type => 'button', :class => "btn", :onclick => "location.href = '#{new_collection_path()}'" %>
-          <%= button_tag "Search Practices", :type => 'button', :class => "btn", :onclick => "location.href = '#{practices_path()}'" %>
-          <%= button_tag "Search Collections", :type => 'button', :class => "btn", :onclick => "location.href = '#{collections_path()}'" %>
-
+    <nav class="nav-grid short-grid">
+      <h2><%= link_to "RJS Billing", {controller: "pages", action: "home"}, class: "logo" %></h2>
+      <div class="mobile-menu">
+        <i class="fa fa-bars"></i>
       </div>
-
-      <% end %>
-      <%= yield %>
-    </div>
-    <%# <footer>
-      <span>2020 RJS Billing</span>
-      <span><a href="#">Contact Us</a></span>
-      <span>Idk some other shit can go here</span>
-    </footer> %>
+      <div class="nav-list hidden-menu">
+        <p><%= link_to 'Home', root_path %></p>
+        <p><%= link_to 'Find/Pay Bill', collections_path %></p>
+        <% if current_user %>
+          <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+        <% else %>
+          <p><%= link_to 'Client Sign In', new_user_session_path %></p>
+        <% end %>
+        <%= button_tag "GET A QUOTE", :type => 'button', :class => "quote-btn", :onclick => "location.href = '#{new_biller_path()}'" %>
+      </div>
+    </nav>
+    <% if current_user && current_user.admin %>
+      <div class="admin-links">
+        <p><%= link_to 'Add Practice', new_practice_path %></p>
+        <p><%= link_to 'Add Collection', new_collection_path %></p>
+        <p><%= link_to 'Search Practices', practices_path %></p>
+        <p><%= link_to 'Search Collections', collections_path %></p>
+        <p><%= link_to 'Biller Applications', billers_path %></p>
+      </div>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

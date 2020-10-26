@@ -1,5 +1,9 @@
-<h2><%= link_to @collection.fname + " " + @collection.lname, @collection %></h2>
-<p>Click above for more info and notes.</p>
+<% if current_user && current_user.admin %>
+  <h2 class="new-sect full-grid"><%= link_to @collection.fname + " " + @collection.lname, @collection %></h2>
+  <p class="full-grid">Click above for more info and notes.</p>
+<% else %>
+  <h2 class="new-sect full-grid"><%= @collection.fname + " " + @collection.lname %></h2>
+<% end %>
 <p>
   <strong>Account number:</strong>
   <%= @collection.account_number %>
@@ -13,11 +17,6 @@
 <p>
   <strong>Last Name:</strong>
   <%= @collection.lname %>
-</p>
-
-<p>
-  <strong>Social Security Number:</strong>
-  <%= @collection.ssn %>
 </p>
 
 <p>
@@ -58,13 +57,11 @@
 <p>
   <strong>Practice:</strong>
   <%= @collection.practice.name %>
-</p>
+</p><br>
 
 <% if @collection.scan.attached? %>
   <div class="attached-scan">
-    <%= image_tag(@collection.scan) %>
+  <p><strong>Scan:</strong></p>
+    <%= image_tag(@collection.scan, class: "scan-img full-grid") %>
   </div>
 <% end %>
-
-<%= link_to 'Edit', edit_collection_path(@collection) %>
-<%= link_to 'Show', @collection %>

@@ -1,6 +1,10 @@
-<h1>Editing Patient</h1>
+<div class="hero"><h2>Edit Collection</h2></div>
 
-<%= render 'form', collection: @collection %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
-<%= link_to 'Show', @collection %> |
-<%= link_to 'Back', collections_path %>
+<div class="main-content">
+    <p class="new-sect">Please enter the following information</p>
+    <div class="break-line"></div>
+    <%= render 'form', collection: @collection %>
+</div>

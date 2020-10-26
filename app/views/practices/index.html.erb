@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="hero">
+  <h2>Practices</h2>
+</div>
 
-<h1>Practices</h1>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
- <div class="search">
-    <h3>Search for Practice by Code</h3>
+<div class="main-content">
+  <div class="search">
     <%= form_with(url: practices_path, method: "get", local: true) do %>
-      <%= text_field_tag(:search, params[:search]) %>
+  <p class="new-sect">Search for Practice by Code</p>
+      <%= text_field_tag(:search, params[:search]) %><br>
       <%= submit_tag ("Search") %><br>
     <% end %>
+    <% if current_user && current_user.admin %>
+      <%#= Show All Button %>
+    <% end %>
   </div>
-
+  <div class="break-line"></div>
+</div>
 <% if @practice %>
   <div class="search-container">
     <%= render 'practices/show' %>

@@ -1,7 +1,6 @@
 <% @billers.each do |biller| %>
 
-    <h2><%= biller.company_name %></h2>
-    <p>Click above for more info.</p>
+    <h2 class="new-sect full-grid"><%= biller.company_name %></h2>
 
     <p>
     <strong>Company Name:</strong>
@@ -46,8 +45,8 @@
     <p>
     <strong>Details:</strong>
     <%= biller.details %>
-    </p>
+    </p><br>
 
-    <%= link_to 'Edit', edit_biller_path(biller) %>
-    <%= link_to 'Delete', biller, method: :delete %>
+    <%= link_to 'Delete', biller, method: :delete %></p>
+    <div class="break-line-full full-grid"></div>
 <% end %>
