@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/home'
   get 'notes/create'
   get 'notes/destroy'
   get 'billers/new'
